@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 13/03/2018 03:47:13 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Profesionista" table="profesionista" schema="public" optimistic-lock="version">
+        <id name="idprofesionista" type="int">
+            <column name="idprofesionista" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" not-null="true" />
+        </property>
+        <property name="apellidopaterno" type="string">
+            <column name="apellidopaterno" not-null="true" />
+        </property>
+        <property name="nacionalidad" type="string">
+            <column name="nacionalidad" not-null="true" />
+        </property>
+        <property name="carrera" type="string">
+            <column name="carrera" not-null="true" />
+        </property>
+        <property name="telefono" type="string">
+            <column name="telefono" not-null="true" />
+        </property>
+        <property name="contrasena" type="string">
+            <column name="contrasena" not-null="true" />
+        </property>
+        <set name="postulars" table="postular" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idprofesionista" />
+            </key>
+            <one-to-many class="modelo.Postular" />
+        </set>
+        <set name="skils" table="skil" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idprofesionista" />
+            </key>
+            <one-to-many class="modelo.Skil" />
+        </set>
+        <set name="formacions" table="formacion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idprofesionista" />
+            </key>
+            <one-to-many class="modelo.Formacion" />
+        </set>
+        <set name="experiencialaborals" table="experiencialaboral" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idprofesionista" />
+            </key>
+            <one-to-many class="modelo.Experiencialaboral" />
+        </set>
+    </class>
+</hibernate-mapping>

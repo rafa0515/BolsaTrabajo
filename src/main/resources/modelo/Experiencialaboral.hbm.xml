@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 13/03/2018 03:47:13 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Experiencialaboral" table="experiencialaboral" schema="public" optimistic-lock="version">
+        <id name="idexperiencia" type="int">
+            <column name="idexperiencia" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="profesionista" class="modelo.Profesionista" fetch="select">
+            <column name="idprofesionista" />
+        </many-to-one>
+        <property name="empresa" type="string">
+            <column name="empresa" />
+        </property>
+        <property name="cargo" type="string">
+            <column name="cargo" />
+        </property>
+        <property name="periodo" type="date">
+            <column name="periodo" length="13" />
+        </property>
+    </class>
+</hibernate-mapping>
